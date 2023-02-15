@@ -5,7 +5,11 @@
 //  Created by Jonathan Dayley on 2/15/23.
 //
 
+import ArgumentParser
 import Foundation
 
-print("Hello, World!")
+let kHomePath: String = ProcessInfo.processInfo.environment["HOME"] ?? "/"
+let kConfigName = ".bookmarks"
+let kConfig: URL = URL(fileURLWithPath: kHomePath)
+	.appendingPathComponent(kConfigName)
 
