@@ -45,7 +45,6 @@
 		193B1C15299D379C00FEEFA0 = {
 			isa = PBXGroup;
 			children = (
-				193B1C2B299D393100FEEFA0 /* Classes */,
 				193B1C20299D379C00FEEFA0 /* bookmarks */,
 				193B1C1F299D379C00FEEFA0 /* Products */,
 			);
@@ -62,6 +61,7 @@
 		193B1C20299D379C00FEEFA0 /* bookmarks */ = {
 			isa = PBXGroup;
 			children = (
+				193B1C2B299D393100FEEFA0 /* Classes */,
 				193B1C21299D379C00FEEFA0 /* main.swift */,
 			);
 			path = bookmarks;
