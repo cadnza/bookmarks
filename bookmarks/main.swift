@@ -3,7 +3,7 @@ import Foundation
 
 struct Bookmarks: ParsableCommand {
 
-	static let config: URL = URL(
+	static let configPath: URL = URL(
 		fileURLWithPath: ProcessInfo.processInfo.environment["HOME"] ?? "/"
 	)
 	.appendingPathComponent(".bookmarks")
