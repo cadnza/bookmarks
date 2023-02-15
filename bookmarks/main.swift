@@ -10,7 +10,7 @@ struct Bookmarks: ParsableCommand {
 
 	static let configuration = CommandConfiguration(
 		abstract: "Sweet and simple web bookmarks manager",
-		subcommands: [Add.self]
+		subcommands: [Add.self, List.self]
 	)
 
 }
