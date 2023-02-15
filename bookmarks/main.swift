@@ -9,14 +9,32 @@ struct Bookmarks: ParsableCommand {
 	.appendingPathComponent(".bookmarks")
 
 	static let configuration = CommandConfiguration(
-		abstract: "Sweet and simple web bookmarks manager.",
+		abstract: "Sweet and simple web bookmarks manager",
 		subcommands: [Add.self]
 	)
 
-	struct Add: ParsableCommand {
+	struct List: ParsableCommand {
 		func run() {
-			print(2) // TODO
+
+		}
+	}
+
+	struct Add: ParsableCommand {
+
+		@Argument(help: "The bookmark's title")
+		var title: String
+
+		@Argument(help: "The bookmark's URL")
+		var url: String
+
+		@Option(help: "A tag for the bookmark, if you'd like one")
+		var tag: String?
+
+		func run() {
+
 		}
 	}
 
 }
+
+Bookmarks.Add.main()  // FIXME: Remove
