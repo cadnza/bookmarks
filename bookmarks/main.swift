@@ -13,28 +13,6 @@ struct Bookmarks: ParsableCommand {
 		subcommands: [Add.self]
 	)
 
-	struct List: ParsableCommand {
-		func run() {
-
-		}
-	}
-
-	struct Add: ParsableCommand {
-
-		@Argument(help: "The bookmark's title")
-		var title: String
-
-		@Argument(help: "The bookmark's URL")
-		var url: String
-
-		@Option(help: "A tag for the bookmark, if you'd like one")
-		var tag: String?
-
-		func run() {
-
-		}
-	}
-
 }
 
 Bookmarks.Add.main()  // FIXME: Remove
