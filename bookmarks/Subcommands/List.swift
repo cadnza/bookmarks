@@ -41,11 +41,14 @@ extension Bookmarks {
 							tagHeading = untaggedHeading
 						}
 						print(tagHeading)
+						print("")
 						currentItems.sorted {
 							$0.title < $1.title
 						}
 						.forEach {
 							print("\(indentSpacer)\($0.title)")
+							print("\(indentSpacer)\($0.url)")
+							print("")
 						}
 					}
 			}
