@@ -12,6 +12,7 @@ extension Bookmarks {
 		var indentSpacer = "\t"
 
 		func run() {
+			// TODO: What if there are no bookmarks?
 			if json {
 				// FIXME: Write logic for JSON output
 			} else {
