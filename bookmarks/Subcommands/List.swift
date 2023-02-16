@@ -55,7 +55,7 @@ extension Bookmarks {
 							tagHeading = untaggedHeading
 							tagHeadingColor = colors["noTag"]!
 						}
-						fputs(
+						fputs( // FIXME: Change all the fputs to prints
 							"\(tagHeading, color: tagHeadingColor, style: .bold)\n",
 							stdout
 						)
