@@ -9,7 +9,7 @@ extension Bookmarks {
 		@Flag(help: "Show output as JSON")
 		private var json = false
 
-		private var untaggedHeading = "*Untagged*"
+		private var untaggedHeading = "Untagged"
 		private var indentSpacer = "  "
 
 		func run() {
@@ -62,7 +62,7 @@ extension Bookmarks {
 						contentsCurrent
 							.forEach {
 								fputs(
-									"\(indentSpacer)\("\($0.id!).", color: colors["id"]!, style: .bold) \($0.title, style: .bold)\n",
+									"\(indentSpacer)\("\($0.id!).", color: colors["id"]!, style: .bold) \($0.title)\n",
 									stdout
 								)
 								fputs(
