@@ -16,40 +16,34 @@ extension Bookmarks {
 			if json {
 				// FIXME: Write logic for JSON output
 			} else {
-				Array(Set(ds.contents.map { $0.tag }))
-					.sorted {
-						guard let u1 = $0 else {
-							return true
+				(ds.contents.map { $0.tag }
+					.reduce(into: []) { result, x in
+						if !result.contains(where: { e in
+							e as? String == x
+						}) {
+							result.append(x as Any)
 						}
-						guard let u2 = $1 else {
-							return false
-						}
-						return u1 < u2
-					}
+					} as! [String?])
 					.forEach {
-						var currentItems: [Item]
+						var contentsCurrent: [Item]
 						var tagHeading: String
 						if let tagU = $0 {
-							currentItems = ds.contents.filter {
+							contentsCurrent = ds.contents.filter {
 								$0.tag == tagU
 							}
 							tagHeading = tagU
 						} else {
-							currentItems = ds.contents.filter {
+							contentsCurrent = ds.contents.filter {
 								$0.tag == nil
 							}
 							tagHeading = untaggedHeading
 						}
 						print(tagHeading)
-						print("")
-						currentItems.sorted {
-							$0.title < $1.title
-						}
-						.forEach {
-							print("\(indentSpacer)\($0.title)")
-							print("\(indentSpacer)\($0.url)")
-							print("")
-						}
+						contentsCurrent
+							.forEach {
+								print("\(indentSpacer)\($0.title)")
+								print("\(indentSpacer)\($0.url)")
+							}
 					}
 			}
 		}

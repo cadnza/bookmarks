@@ -32,7 +32,18 @@ struct DataSource {
 				)
 				throw Errors.cantParseConfig
 			}
-			self.contents = contentsWorking
+			self.contents = contentsWorking.sorted {
+				guard let tagLU = $0.tag, let tagRU = $1.tag else {
+					if $0.tag == $1.tag {
+						return $0.title < $1.title
+					}
+					return $0.tag == nil
+				}
+				guard tagLU == tagRU else {
+					return tagLU < tagRU
+				}
+				return $0.title < $1.title
+			}
 		} else {
 			self.contents = []
 		}
