@@ -13,7 +13,7 @@ struct DataSource {
 	let data: Data?
 	let fm = FileManager.default
 
-	let contents: [Item]
+	var contents: [Item]
 
 	init() throws {
 		// Set path to config
@@ -43,6 +43,10 @@ struct DataSource {
 					return tagLU < tagRU
 				}
 				return $0.title < $1.title
+			}
+			for i in 0..<contents.count {
+				let idNew = i + 1
+				contents[i].setId(idNew)
 			}
 		} else {
 			self.contents = []

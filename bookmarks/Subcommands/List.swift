@@ -18,6 +18,7 @@ extension Bookmarks {
 				"tag": .green,
 				"url": .blue,
 				"error": .red,
+				"id": .magenta,
 			]
 			guard !ds.contents.isEmpty else {
 				Bookmarks.exit(
@@ -61,7 +62,7 @@ extension Bookmarks {
 						contentsCurrent
 							.forEach {
 								fputs(
-									"\(indentSpacer)\($0.title, style: .bold)\n",
+									"\(indentSpacer)\("\($0.id!).", color: colors["id"]!, style: .bold) \($0.title, style: .bold)\n",
 									stdout
 								)
 								fputs(

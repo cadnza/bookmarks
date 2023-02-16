@@ -16,4 +16,4 @@ struct Bookmarks: ParsableCommand {
 
 }
 
-Bookmarks.main()
+Bookmarks.main(["list"])
