@@ -16,6 +16,10 @@ extension Bookmarks {
 			if json {
 				// FIXME: Write logic for JSON output
 			} else {
+				let colors: [String: Color] = [
+					"noTag": .red,
+					"tag": .green
+				]
 				(ds.contents.map { $0.tag }
 					.reduce(into: []) { result, x in
 						if !result.contains(where: { e in
@@ -27,18 +31,24 @@ extension Bookmarks {
 					.forEach {
 						var contentsCurrent: [Item]
 						var tagHeading: String
+						var tagHeadingColor: Color
 						if let tagU = $0 {
 							contentsCurrent = ds.contents.filter {
 								$0.tag == tagU
 							}
 							tagHeading = tagU
+							tagHeadingColor = colors["tag"]!
 						} else {
 							contentsCurrent = ds.contents.filter {
 								$0.tag == nil
 							}
 							tagHeading = untaggedHeading
+							tagHeadingColor = colors["noTag"]!
 						}
-						print(tagHeading)
+						fputs(
+							"\(tagHeading, color: tagHeadingColor, style: .bold)\n",
+							stdout
+						)
 						contentsCurrent
 							.forEach {
 								print("\(indentSpacer)\($0.title)")
