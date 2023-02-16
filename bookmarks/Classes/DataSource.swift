@@ -45,7 +45,8 @@ struct DataSource {
 				let contentsWorking = try? JSONDecoder()
 					.decode([Item].self, from: dataU)
 			else {
-				let errMessage = "Can't read bookmarks; please delete '\(configURL.path)' and try again."
+				let errMessage =
+					"Can't read bookmarks; please delete '\(configURL.path)' and try again."
 				throw Errors.cantParseConfig(errMessage)
 			}
 			self.contents = contentsWorking.sorted {
