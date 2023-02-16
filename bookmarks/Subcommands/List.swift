@@ -28,22 +28,7 @@ extension Bookmarks {
 				)
 			}
 			if json {
-				let toSerialize: [[String: Any?]] = ds.contents.map {
-					[
-						"id": $0.id,
-						"title": $0.title,
-						"url": $0.url.absoluteString,
-						"tag": $0.tag,
-					]
-				}
-				let serialized = try! JSONSerialization.data(
-					withJSONObject: toSerialize,
-					options: [
-						.prettyPrinted, .sortedKeys, .withoutEscapingSlashes,
-					]
-				)
-				let jsonString = String(data: serialized, encoding: .utf8)
-				print(jsonString!)
+				print(ds.json)
 			} else {
 				(ds.contents.map { $0.tag }
 					.reduce(into: []) { result, x in

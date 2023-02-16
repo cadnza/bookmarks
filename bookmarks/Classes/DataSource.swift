@@ -15,6 +15,25 @@ struct DataSource {
 
 	var contents: [Item]
 
+	var json: String {
+		let toSerialize: [[String: Any?]] = contents.map {
+			[
+				"id": $0.id,
+				"title": $0.title,
+				"url": $0.url.absoluteString,
+				"tag": $0.tag,
+			]
+		}
+		let serialized = try! JSONSerialization.data(
+			withJSONObject: toSerialize,
+			options: [
+				.prettyPrinted, .sortedKeys, .withoutEscapingSlashes,
+			]
+		)
+		let jsonString = String(data: serialized, encoding: .utf8)!
+		return jsonString
+	}
+
 	init() throws {
 		// Set path to config
 		self.configURL = URL(fileURLWithPath: homeVar)
