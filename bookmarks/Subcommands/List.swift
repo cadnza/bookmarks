@@ -14,15 +14,19 @@ extension Bookmarks {
 		private var indentSpacerSmall = "  "
 
 		func run() {
-			// TODO: What if there are no bookmarks?
+			let colors: [String: Color] = [
+				"noTag": .red,
+				"tag": .green,
+				"url": .blue,
+				"error": .red
+			]
+			guard !ds.contents.isEmpty else {
+				fputs("\("No bookmarks to show", color: colors["error"]!)\n", stderr)
+				Bookmarks.List.exit(withError: ExitCodes.general)
+			}
 			if json {
 				// FIXME: Write logic for JSON output
 			} else {
-				let colors: [String: Color] = [
-					"noTag": .red,
-					"tag": .green,
-					"url": .blue,
-				]
 				(ds.contents.map { $0.tag }
 					.reduce(into: []) { result, x in
 						if !result.contains(where: { e in

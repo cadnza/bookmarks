@@ -3,6 +3,10 @@ import Foundation
 
 struct Bookmarks: ParsableCommand {
 
+	enum ExitCodes: Error {
+		case general
+	}
+
 	static let ds: DataSource = try! DataSource()
 
 	static let configuration = CommandConfiguration(
