@@ -11,6 +11,7 @@ extension Bookmarks {
 
 		private var untaggedHeading = "*Untagged*"
 		private var indentSpacer = "\t"
+		private var indentSpacerSmall = "  "
 
 		func run() {
 			// TODO: What if there are no bookmarks?
@@ -19,7 +20,8 @@ extension Bookmarks {
 			} else {
 				let colors: [String: Color] = [
 					"noTag": .red,
-					"tag": .green
+					"tag": .green,
+					"url": .blue,
 				]
 				(ds.contents.map { $0.tag }
 					.reduce(into: []) { result, x in
@@ -52,8 +54,14 @@ extension Bookmarks {
 						)
 						contentsCurrent
 							.forEach {
-								print("\(indentSpacer)\($0.title)")
-								print("\(indentSpacer)\($0.url)")
+								fputs(
+									"\(indentSpacer)\($0.title, style: .bold)\n",
+									stdout
+								)
+								fputs(
+									"\(indentSpacer)\(indentSpacerSmall)\($0.url, color: colors["url"]!, style: [.bold, .underlined])\n",
+									stdout
+								)
 							}
 					}
 			}
