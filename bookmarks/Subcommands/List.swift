@@ -17,11 +17,14 @@ extension Bookmarks {
 				"noTag": .red,
 				"tag": .green,
 				"url": .blue,
-				"error": .red
+				"error": .red,
 			]
 			guard !ds.contents.isEmpty else {
-				fputs("\("No bookmarks to show", color: colors["error"]!)\n", stderr)
-				Bookmarks.List.exit(withError: ExitCodes.general)
+				Bookmarks.exit(
+					withError: ExitCodes.general(
+						"No bookmarks to show"
+					)
+				)
 			}
 			if json {
 				// FIXME: Write logic for JSON output
