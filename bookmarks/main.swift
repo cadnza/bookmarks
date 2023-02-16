@@ -16,4 +16,4 @@ struct Bookmarks: ParsableCommand {
 
 }
 
-Bookmarks.List.main()  // FIXME: Remove
+Bookmarks.main()

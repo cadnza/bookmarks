@@ -10,8 +10,7 @@ extension Bookmarks {
 		private var json = false
 
 		private var untaggedHeading = "*Untagged*"
-		private var indentSpacer = "\t"
-		private var indentSpacerSmall = "  "
+		private var indentSpacer = "  "
 
 		func run() {
 			let colors: [String: Color] = [
@@ -63,7 +62,7 @@ extension Bookmarks {
 									stdout
 								)
 								fputs(
-									"\(indentSpacer)\(indentSpacerSmall)\($0.url, color: colors["url"]!, style: [.bold, .underlined])\n",
+									"\(indentSpacer)\(indentSpacer)\($0.url, color: colors["url"]!, style: [.bold, .underlined])\n",
 									stdout
 								)
 							}
