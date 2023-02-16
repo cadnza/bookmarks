@@ -1,4 +1,5 @@
 import ArgumentParser
+import Chalk
 import Foundation
 
 extension Bookmarks {
@@ -6,10 +7,10 @@ extension Bookmarks {
 	struct List: ParsableCommand {
 
 		@Flag(help: "Show output as JSON")
-		var json = false
+		private var json = false
 
-		var untaggedHeading = "*Untagged*"
-		var indentSpacer = "\t"
+		private var untaggedHeading = "*Untagged*"
+		private var indentSpacer = "\t"
 
 		func run() {
 			// TODO: What if there are no bookmarks?

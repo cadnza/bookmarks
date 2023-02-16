@@ -13,6 +13,7 @@
 		193B1C31299D626800FEEFA0 /* Add.swift in Sources */ = {isa = PBXBuildFile; fileRef = 193B1C30299D626800FEEFA0 /* Add.swift */; };
 		193B1C33299D627A00FEEFA0 /* List.swift in Sources */ = {isa = PBXBuildFile; fileRef = 193B1C32299D627A00FEEFA0 /* List.swift */; };
 		193B1C35299D641700FEEFA0 /* DataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 193B1C34299D641700FEEFA0 /* DataSource.swift */; };
+		19C4FD5A299D928200587064 /* Chalk in Frameworks */ = {isa = PBXBuildFile; productRef = 19C4FD59299D928200587064 /* Chalk */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -41,6 +42,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				19C4FD5A299D928200587064 /* Chalk in Frameworks */,
 				193B1C2A299D38E400FEEFA0 /* ArgumentParser in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -111,6 +113,7 @@
 			name = bookmarks;
 			packageProductDependencies = (
 				193B1C29299D38E400FEEFA0 /* ArgumentParser */,
+				19C4FD59299D928200587064 /* Chalk */,
 			);
 			productName = bookmarks;
 			productReference = 193B1C1E299D379C00FEEFA0 /* bookmarks */;
@@ -142,6 +145,7 @@
 			mainGroup = 193B1C15299D379C00FEEFA0;
 			packageReferences = (
 				193B1C28299D38E400FEEFA0 /* XCRemoteSwiftPackageReference "swift-argument-parser" */,
+				19C4FD58299D928200587064 /* XCRemoteSwiftPackageReference "Chalk" */,
 			);
 			productRefGroup = 193B1C1F299D379C00FEEFA0 /* Products */;
 			projectDirPath = "";
@@ -356,6 +360,14 @@
 				minimumVersion = 1.0.0;
 			};
 		};
+		19C4FD58299D928200587064 /* XCRemoteSwiftPackageReference "Chalk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/mxcl/Chalk.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.5.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -363,6 +375,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 193B1C28299D38E400FEEFA0 /* XCRemoteSwiftPackageReference "swift-argument-parser" */;
 			productName = ArgumentParser;
+		};
+		19C4FD59299D928200587064 /* Chalk */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 19C4FD58299D928200587064 /* XCRemoteSwiftPackageReference "Chalk" */;
+			productName = Chalk;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
