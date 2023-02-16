@@ -16,4 +16,4 @@ struct Bookmarks: ParsableCommand {
 
 }
 
-Bookmarks.main(["list","--json"]) // FIXME: Remove args
+Bookmarks.main(["list"]) // FIXME: Remove args

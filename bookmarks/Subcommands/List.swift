@@ -55,19 +55,16 @@ extension Bookmarks {
 							tagHeading = untaggedHeading
 							tagHeadingColor = colors["noTag"]!
 						}
-						fputs(  // FIXME: Change all the fputs to prints
-							"\(tagHeading, color: tagHeadingColor, style: .bold)\n",
-							stdout
+						print(
+							"\(tagHeading, color: tagHeadingColor, style: .bold)"
 						)
 						contentsCurrent
 							.forEach {
-								fputs(
-									"\(indentSpacer)\("\($0.id!).", color: colors["id"]!, style: .bold) \($0.title)\n",
-									stdout
+								print(
+									"\(indentSpacer)\("\($0.id!).", color: colors["id"]!, style: .bold) \($0.title)"
 								)
-								fputs(
-									"\(indentSpacer)\(indentSpacer)\($0.url, color: colors["url"]!, style: [.bold, .underlined])\n",
-									stdout
+								print(
+									"\(indentSpacer)\(indentSpacer)\($0.url, color: colors["url"]!, style: [.bold, .underlined])"
 								)
 							}
 					}
