@@ -28,7 +28,22 @@ extension Bookmarks {
 				)
 			}
 			if json {
-				// FIXME: Write logic for JSON output
+				let toSerialize: [[String: Any?]] = ds.contents.map {
+					[
+						"id": $0.id,
+						"title": $0.title,
+						"url": $0.url.absoluteString,
+						"tag": $0.tag,
+					]
+				}
+				let serialized = try! JSONSerialization.data(
+					withJSONObject: toSerialize,
+					options: [
+						.prettyPrinted, .sortedKeys, .withoutEscapingSlashes,
+					]
+				)
+				let jsonString = String(data: serialized, encoding: .utf8)
+				print(jsonString!)
 			} else {
 				(ds.contents.map { $0.tag }
 					.reduce(into: []) { result, x in
@@ -55,7 +70,7 @@ extension Bookmarks {
 							tagHeading = untaggedHeading
 							tagHeadingColor = colors["noTag"]!
 						}
-						fputs( // FIXME: Change all the fputs to prints
+						fputs(  // FIXME: Change all the fputs to prints
 							"\(tagHeading, color: tagHeadingColor, style: .bold)\n",
 							stdout
 						)
