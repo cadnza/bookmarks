@@ -1,6 +1,6 @@
 import Foundation
 
-struct DataSource {
+class DataSource {
 
 	let homeVar = ProcessInfo.processInfo.environment["HOME"] ?? "/"
 	let configFileName = ".bookmarks"
@@ -45,7 +45,7 @@ struct DataSource {
 		}
 	}
 
-	private mutating func sortContents() {
+	private func sortContents() {
 		self.contents = contents.sorted {
 			guard let tagLU = $0.tag, let tagRU = $1.tag else {
 				if $0.tag == $1.tag {
@@ -60,7 +60,7 @@ struct DataSource {
 		}
 	}
 
-	mutating func write() {
+	func write() {
 		sortContents()
 		do {
 			try jsonNoIDs.write(

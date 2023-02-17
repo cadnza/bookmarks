@@ -14,13 +14,16 @@ extension Bookmarks {
 		@Option(help: "The bookmark's new URL")
 		var url: String?
 
-		@Option(
-			help: "The bookmark's new tag, or NULL to remove the current tag"
-		)
+		@Option(help: "The bookmark's new tag, or NULL to remove the current tag")
 		var tag: String?
 
 		func run() {
-			// TODO
+			var itemCurrent = ds.contents.first { $0.id == id }
+			if let titleU = title {
+				itemCurrent!.setTitle(titleU)
+			}
+			// FIXME
+			ds.write()
 		}
 
 		func validate() throws {

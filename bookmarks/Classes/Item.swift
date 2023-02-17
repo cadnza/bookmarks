@@ -1,6 +1,6 @@
 import Foundation
 
-struct Item: Decodable {
+class Item: Decodable {
 
 	private enum Keys: CodingKey {
 		case title
@@ -8,13 +8,13 @@ struct Item: Decodable {
 		case tag
 	}
 
-	let title: String
-	let url: URL
-	let tag: String?
+	var title: String
+	var url: URL
+	var tag: String?
 
 	var id: Int!
 
-	init(from decoder: Decoder) {
+	required init(from decoder: Decoder) {
 		let container = try! decoder.container(keyedBy: Keys.self)
 		self.title = try! container.decode(String.self, forKey: .title)
 		self.url = try! container.decode(URL.self, forKey: .url)
@@ -27,7 +27,19 @@ struct Item: Decodable {
 		self.tag = tag
 	}
 
-	mutating func setId(_ id: Int) {
+	func setTitle(_ title: String) {
+		self.title = title
+	}
+
+	func setUrl(_ url: URL) {
+		self.url = url
+	}
+
+	func setTag(_ tag: String?) {
+		self.tag = tag
+	}
+
+	func setId(_ id: Int) {
 		self.id = id
 	}
 
