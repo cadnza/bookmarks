@@ -27,6 +27,7 @@ extension Bookmarks {
 				tag: tagTrimmed
 			)
 			ds.contents.append(newItem)
+			ds.write()
 		}
 
 		func validate() throws {
