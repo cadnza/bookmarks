@@ -24,6 +24,10 @@ extension Bookmarks {
 		}
 
 		func validate() throws {
+			// ID is valid
+			guard ds.contents.map({ $0.id }).contains(id) else {
+				exitWithError("Please specify a valid bookmark ID.")
+			}
 			// At least one update parameter is specified
 			guard [title, url, tag].map({ $0 != nil }).contains(true) else {
 				exitWithError(
@@ -47,7 +51,13 @@ extension Bookmarks {
 				else {
 					exitWithError("A bookmark by that title already exists.")
 				}
-				// Title has changed // TODO
+				// Title has changed
+				guard ds.contents.first(where: { $0.id == id })!.title != title
+				else {
+					exitWithError(
+						"Title has not changed and will not be updated."
+					)
+				}
 			}
 			// URL
 			if let urlU = url {
@@ -66,7 +76,15 @@ extension Bookmarks {
 				else {
 					exitWithError("A bookmark to that URL already exists.")
 				}
-				// URL has changed // TODO
+				// URL has changed
+				guard
+					ds.contents.first(where: { $0.id == id })!.url
+						.absoluteString != url
+				else {
+					exitWithError(
+						"URL has not changed and will not be updated."
+					)
+				}
 			}
 			// Tag
 			if let tagU = tag {
@@ -76,7 +94,13 @@ extension Bookmarks {
 				else {
 					exitWithError("Please specify a tag with positive length.")
 				}
-				// Tag has changed // TODO
+				// Tag has changed
+				guard ds.contents.first(where: { $0.id == id })!.tag != tag
+				else {
+					exitWithError(
+						"Tag has not changed and will not be updated."
+					)
+				}
 			}
 		}
 	}
