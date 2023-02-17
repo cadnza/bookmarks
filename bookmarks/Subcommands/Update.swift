@@ -40,11 +40,14 @@ extension Bookmarks {
 				}
 				// Title is unique
 				guard
-					!ds.contents.filter({ $0.id != id }).map({ $0.title })
+					!ds.contents
+						.filter({ $0.id != id })
+						.map({ $0.title })
 						.contains(titleU)
 				else {
 					exitWithError("A bookmark by that title already exists.")
 				}
+				// Title has changed // TODO
 			}
 			// URL
 			if let urlU = url {
@@ -56,11 +59,14 @@ extension Bookmarks {
 				}
 				// URL is unique
 				guard
-					!ds.contents.filter({ $0.id != id })
-						.map({ $0.url.absoluteString }).contains(urlU)
+					!ds.contents
+						.filter({ $0.id != id })
+						.map({ $0.url.absoluteString })
+						.contains(urlU)
 				else {
 					exitWithError("A bookmark to that URL already exists.")
 				}
+				// URL has changed // TODO
 			}
 			// Tag
 			if let tagU = tag {
@@ -70,6 +76,7 @@ extension Bookmarks {
 				else {
 					exitWithError("Please specify a tag with positive length.")
 				}
+				// Tag has changed // TODO
 			}
 		}
 	}
