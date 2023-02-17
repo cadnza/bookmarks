@@ -38,18 +38,8 @@ struct DataSource {
 					"Can't read bookmarks; please delete '\(configURL.path)' and try again."
 				)
 			}
-			self.contents = contentsWorking.sorted {
-				guard let tagLU = $0.tag, let tagRU = $1.tag else {
-					if $0.tag == $1.tag {
-						return $0.title < $1.title
-					}
-					return $0.tag == nil
-				}
-				guard tagLU == tagRU else {
-					return tagLU < tagRU
-				}
-				return $0.title < $1.title
-			}
+			self.contents = contentsWorking
+			sortContents()
 			for i in 0..<contents.count {
 				let idNew = i + 1
 				contents[i].setId(idNew)
@@ -59,7 +49,23 @@ struct DataSource {
 		}
 	}
 
-	private func write() {
+	private mutating func sortContents() {
+		self.contents = contents.sorted {
+			guard let tagLU = $0.tag, let tagRU = $1.tag else {
+				if $0.tag == $1.tag {
+					return $0.title < $1.title
+				}
+				return $0.tag == nil
+			}
+			guard tagLU == tagRU else {
+				return tagLU < tagRU
+			}
+			return $0.title < $1.title
+		}
+	}
+
+	private mutating func write() {
+		// sortContents() // FIXME: This is erroring for some reason. Come back and fix it.
 		do {
 			try jsonNoIDs.write(
 				to: configURL,
