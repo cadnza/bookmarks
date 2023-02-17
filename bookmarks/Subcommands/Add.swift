@@ -23,14 +23,17 @@ extension Bookmarks {
 		}
 
 		func validate() throws {
+			// Title has positive length
 			guard title.trimmingCharacters(in: .whitespacesAndNewlines).count >= 1 else {
 				exitWithError("Please specify a title with positive length.")
 			}
+			// URL is valid
 			let urlErrorMessage = "Please specify a valid URL."
 			let urlParsed = URL(string: url)
 			guard urlParsed != nil else {
 				exitWithError(urlErrorMessage)
 			}
+			// Tag has positive length
 			if let tagU = tag {
 				guard tagU.trimmingCharacters(in: .whitespacesAndNewlines).count >= 1 else {
 					exitWithError("Please specify a tag with positive length.")
