@@ -32,7 +32,7 @@ extension Bookmarks {
 		func validate() throws {
 			// Title has positive length
 			guard
-				title.trimmingCharacters(in: .whitespacesAndNewlines).count >= 1
+				title.hasPositiveLength()
 			else {
 				exitWithError("Please specify a title with positive length.")
 			}
@@ -45,8 +45,7 @@ extension Bookmarks {
 			// Tag has positive length
 			if let tagU = tag {
 				guard
-					tagU.trimmingCharacters(in: .whitespacesAndNewlines).count
-						>= 1
+					tagU.hasPositiveLength()
 				else {
 					exitWithError("Please specify a tag with positive length.")
 				}
