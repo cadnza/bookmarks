@@ -65,7 +65,7 @@ struct DataSource {
 	}
 
 	private mutating func write() {
-		// sortContents() // FIXME: This is erroring for some reason. Come back and fix it.
+		// sortContents() // FIXME: This is erroring for some reason; my theory is that contents doesn't want to mutate itself in its own getter. Come back and fix it.
 		do {
 			try jsonNoIDs.write(
 				to: configURL,
