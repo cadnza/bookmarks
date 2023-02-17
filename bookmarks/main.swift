@@ -12,4 +12,4 @@ struct Bookmarks: ParsableCommand {
 
 }
 
-Bookmarks.main(["add", "s", "ss"])  // FIXME: Remove args
+Bookmarks.main(["add", "ORANGES", "oranges.com"])  // FIXME: Remove args
