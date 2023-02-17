@@ -15,16 +15,25 @@ extension Bookmarks {
 		var tag: String?
 
 		func run() {
-			let titleTrimmed = title.trimmingCharacters(in: .whitespacesAndNewlines)
+			let titleTrimmed = title.trimmingCharacters(
+				in: .whitespacesAndNewlines
+			)
 			let urlParsed = URL(string: url)!
-			let tagTrimmed = tag?.trimmingCharacters(in: .whitespacesAndNewlines)
-			let newItem = Item(title: titleTrimmed, url: urlParsed, tag: tagTrimmed)
+			let tagTrimmed = tag?
+				.trimmingCharacters(in: .whitespacesAndNewlines)
+			let newItem = Item(
+				title: titleTrimmed,
+				url: urlParsed,
+				tag: tagTrimmed
+			)
 			ds.contents.append(newItem)
 		}
 
 		func validate() throws {
 			// Title has positive length
-			guard title.trimmingCharacters(in: .whitespacesAndNewlines).count >= 1 else {
+			guard
+				title.trimmingCharacters(in: .whitespacesAndNewlines).count >= 1
+			else {
 				exitWithError("Please specify a title with positive length.")
 			}
 			// URL is valid
@@ -35,12 +44,22 @@ extension Bookmarks {
 			}
 			// Tag has positive length
 			if let tagU = tag {
-				guard tagU.trimmingCharacters(in: .whitespacesAndNewlines).count >= 1 else {
+				guard
+					tagU.trimmingCharacters(in: .whitespacesAndNewlines).count
+						>= 1
+				else {
 					exitWithError("Please specify a tag with positive length.")
 				}
 			}
-			// Title is unique // TODO
-			// URL is unique // TODO
+			// Title is unique
+			guard !ds.contents.map({ $0.title }).contains(title) else {
+				exitWithError("A bookmark by that title already exists.")
+			}
+			// URL is unique
+			guard !ds.contents.map({ $0.url.absoluteString }).contains(url)
+			else {
+				exitWithError("A bookmark to that URL already exists.")
+			}
 		}
 	}
 
