@@ -5,6 +5,8 @@ extension Bookmarks {
 
 	struct Update: ParsableCommand {
 
+		static let tagNullStandin = "NULL"
+
 		@Argument(help: "The ID of the bookmark to update \(idsWarningNote)")
 		var id: Int
 
@@ -14,15 +16,26 @@ extension Bookmarks {
 		@Option(help: "The bookmark's new URL")
 		var url: String?
 
-		@Option(help: "The bookmark's new tag, or NULL to remove the current tag")
-		var tag: String?
+		@Option(
+			help:
+				"The bookmark's new tag, or \(Bookmarks.Update.tagNullStandin) to remove the current tag"
+		)
+		var tag: String?  // swiftlint:disable:this let_var_whitespace
 
 		func run() {
 			var itemCurrent = ds.contents.first { $0.id == id }
 			if let titleU = title {
 				itemCurrent!.setTitle(titleU)
 			}
-			// FIXME
+			if let urlU = url {
+				itemCurrent!.setUrl(URL(string: urlU)!)
+			}
+			if let tagU = tag {
+				itemCurrent!
+					.setTag(
+						tagU == Bookmarks.Update.tagNullStandin ? nil : tagU
+					)
+			}
 			ds.write()
 		}
 
