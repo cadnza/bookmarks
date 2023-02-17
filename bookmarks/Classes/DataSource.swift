@@ -15,23 +15,12 @@ struct DataSource {
 		}
 	}
 
-	var json: String { // FIXME: This is causing the writer to write out IDs. That's bad.
-		let toSerialize: [[String: Any?]] = contents.map {
-			[
-				"id": $0.id,
-				"title": $0.title,
-				"url": $0.url.absoluteString,
-				"tag": $0.tag,
-			]
-		}
-		let serialized = try! JSONSerialization.data(
-			withJSONObject: toSerialize,
-			options: [
-				.prettyPrinted, .sortedKeys, .withoutEscapingSlashes,
-			]
-		)
-		let jsonString = String(data: serialized, encoding: .utf8)!
-		return jsonString
+	var jsonNoIDs: String {
+		buildJson(withIDs: false)
+	}
+
+	var jsonWithIDs: String {
+		buildJson(withIDs: true)
 	}
 
 	init() throws {
@@ -70,12 +59,41 @@ struct DataSource {
 		}
 	}
 
-	func write() {
+	private func write() {
 		do {
-			try json.write(to: configURL, atomically: false, encoding: .utf8)
+			try jsonNoIDs.write(
+				to: configURL,
+				atomically: false,
+				encoding: .utf8
+			)
 		} catch {
 			print(error)
 		}
+	}
+
+	private func buildJson(withIDs: Bool) -> String {
+		let toSerialize: [[String: Any?]] = contents.map {
+			withIDs
+				? [
+					"id": $0.id,
+					"title": $0.title,
+					"url": $0.url.absoluteString,
+					"tag": $0.tag,
+				]
+				: [
+					"title": $0.title,
+					"url": $0.url.absoluteString,
+					"tag": $0.tag,
+				]
+		}
+		let serialized = try! JSONSerialization.data(
+			withJSONObject: toSerialize,
+			options: [
+				.prettyPrinted, .sortedKeys, .withoutEscapingSlashes,
+			]
+		)
+		let jsonString = String(data: serialized, encoding: .utf8)!
+		return jsonString
 	}
 
 }

@@ -24,7 +24,7 @@ extension Bookmarks {
 				exitWithError("No bookmarks to show.")
 			}
 			if json {
-				print(ds.json)
+				print(ds.jsonWithIDs)
 			} else {
 				(ds.contents.map { $0.tag }
 					.reduce(into: []) { result, x in
