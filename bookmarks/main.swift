@@ -1,11 +1,8 @@
 import ArgumentParser
+import Chalk
 import Foundation
 
 struct Bookmarks: ParsableCommand {
-
-	enum ExitCodes: Error {
-		case general(String)
-	}
 
 	static let ds: DataSource = try! DataSource()
 
@@ -14,6 +11,17 @@ struct Bookmarks: ParsableCommand {
 		subcommands: [Add.self, List.self]
 	)
 
+	static func exitWithError(_ message: String, _ code: Int32) -> Never {
+		let colorError = Color.red
+		fputs(
+			"\(message, color: colorError)\n",
+			stderr
+		)
+		Bookmarks.exit(
+			withError: ExitCode(code)
+		)
+	}
+
 }
 
-Bookmarks.main(["list"]) // FIXME: Remove args
+Bookmarks.main(["list"])  // FIXME: Remove args
