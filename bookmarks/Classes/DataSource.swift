@@ -9,9 +9,13 @@ struct DataSource {
 	let data: Data?
 	let fm = FileManager.default
 
-	var contents: [Item]
+	var contents: [Item] {
+		didSet {
+			write()
+		}
+	}
 
-	var json: String {
+	var json: String { // FIXME: This is causing the writer to write out IDs. That's bad.
 		let toSerialize: [[String: Any?]] = contents.map {
 			[
 				"id": $0.id,
@@ -63,6 +67,14 @@ struct DataSource {
 			}
 		} else {
 			self.contents = []
+		}
+	}
+
+	func write() {
+		do {
+			try json.write(to: configURL, atomically: false, encoding: .utf8)
+		} catch {
+			print(error)
 		}
 	}
 

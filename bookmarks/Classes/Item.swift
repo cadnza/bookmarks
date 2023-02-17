@@ -21,6 +21,12 @@ struct Item: Decodable {
 		self.tag = try! container.decode(String?.self, forKey: .tag)
 	}
 
+	init(title: String, url: URL, tag: String?) {
+		self.title = title
+		self.url = url
+		self.tag = tag
+	}
+
 	mutating func setId(_ id: Int) {
 		self.id = id
 	}
