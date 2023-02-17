@@ -3,7 +3,7 @@ import Foundation
 
 struct Bookmarks: ParsableCommand {
 
-	static let ds: DataSource = try! DataSource()
+	static var ds: DataSource = try! DataSource()
 
 	static let configuration = CommandConfiguration(
 		abstract: "Sweet and simple web bookmarks manager",
@@ -12,4 +12,4 @@ struct Bookmarks: ParsableCommand {
 
 }
 
-Bookmarks.main(["list"])  // FIXME: Remove args
+Bookmarks.main(["add", "s", "ss"])  // FIXME: Remove args
