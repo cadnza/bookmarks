@@ -21,7 +21,7 @@ extension Bookmarks {
 				"id": .magenta,
 			]
 			guard !ds.contents.isEmpty else {
-				Bookmarks.exitWithError("No bookmarks to show.", 1)
+				exitWithError("No bookmarks to show.")
 			}
 			if json {
 				print(ds.json)

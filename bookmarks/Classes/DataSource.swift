@@ -2,10 +2,6 @@ import Foundation
 
 struct DataSource {
 
-	enum Errors: Error {
-		case cantParseConfig(String)
-	}
-
 	let homeVar = ProcessInfo.processInfo.environment["HOME"] ?? "/"
 	let configFileName = ".bookmarks"
 	let configURL: URL
@@ -45,9 +41,9 @@ struct DataSource {
 				let contentsWorking = try? JSONDecoder()
 					.decode([Item].self, from: dataU)
 			else {
-				let errMessage =
+				exitWithError(
 					"Can't read bookmarks; please delete '\(configURL.path)' and try again."
-				throw Errors.cantParseConfig(errMessage)
+				)
 			}
 			self.contents = contentsWorking.sorted {
 				guard let tagLU = $0.tag, let tagRU = $1.tag else {
