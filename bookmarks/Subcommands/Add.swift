@@ -39,7 +39,8 @@ extension Bookmarks {
 					exitWithError("Please specify a tag with positive length.")
 				}
 			}
-			// FIXME: Make sure title and URL are unique
+			// Title is unique // TODO
+			// URL is unique // TODO
 		}
 	}
 
