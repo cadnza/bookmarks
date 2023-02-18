@@ -1,3 +1,4 @@
+// swiftlint:disable:this file_name
 import ArgumentParser
 import Foundation
 
