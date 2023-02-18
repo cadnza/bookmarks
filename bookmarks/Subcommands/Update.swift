@@ -5,7 +5,7 @@ extension Bookmarks {
 
 	struct Update: ParsableCommand {
 
-		static let tagNullStandin = "NULL"
+		static let tagNullStandin = "null"
 
 		@Argument(help: "The ID of the bookmark to update \(idsWarningNote)")
 		var id: Int
@@ -18,7 +18,7 @@ extension Bookmarks {
 
 		@Option(
 			help:
-				"The bookmark's new tag, or \(Bookmarks.Update.tagNullStandin) to remove the current tag"
+				"The bookmark's new tag, or '\(Bookmarks.Update.tagNullStandin)' to remove the current tag"
 		)
 		var tag: String?  // swiftlint:disable:this let_var_whitespace
 
