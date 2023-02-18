@@ -6,6 +6,11 @@ extension Bookmarks {
 
 	struct List: ParsableCommand {
 
+		static let configuration = CommandConfiguration(
+			abstract: "List all bookmarks",
+			subcommands: [Tags.self]
+		)
+
 		@Flag(help: "Show output as JSON")
 		private var json = false
 

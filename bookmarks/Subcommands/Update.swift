@@ -5,6 +5,11 @@ extension Bookmarks {
 
 	struct Update: ParsableCommand {
 
+		static let configuration = CommandConfiguration(
+			abstract: "Update a bookmark",
+			subcommands: [Tag.self]
+		)
+
 		static let tagNullStandin = "null"
 
 		@Argument(help: "The ID of the bookmark to update \(idsWarningNote)")

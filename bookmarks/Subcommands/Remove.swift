@@ -5,6 +5,11 @@ extension Bookmarks {
 
 	struct Remove: ParsableCommand {
 
+		static let configuration = CommandConfiguration(
+			abstract: "Remove a bookmark",
+			subcommands: [Tag.self]
+		)
+
 		@Argument(help: "The ID of the bookmark to remove \(idsWarningNote)")
 		var id: Int
 

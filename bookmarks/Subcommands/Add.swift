@@ -5,6 +5,10 @@ extension Bookmarks {
 
 	struct Add: ParsableCommand {
 
+		static let configuration = CommandConfiguration(
+			abstract: "Add a new bookmark"
+		)
+
 		@Argument(help: "The bookmark's title")
 		var title: String
 
