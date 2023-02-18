@@ -15,6 +15,9 @@ struct Bookmarks: ParsableCommand {
 		]
 	)
 
+	static let untaggedHeading = "Untagged"
+	static let indentSpacer = "  "
+
 	static let idsWarningNote =
 		"NOTE: Bookmark IDs are NOT STATIC and WILL CHANGE as you add and remove bookmarks."
 

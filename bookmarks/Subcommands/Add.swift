@@ -10,7 +10,7 @@ extension Bookmarks {
 		)
 
 		@Argument(help: "The bookmark's title.", completion: nil)
-		var title: String
+		var Title: String
 
 		@Argument(help: "The bookmark's URL.", completion: nil)
 		var url: String
@@ -22,7 +22,7 @@ extension Bookmarks {
 		var tag: String?  // swiftlint:disable:this let_var_whitespace
 
 		func run() {
-			let titleTrimmed = title.trimmingCharacters(
+			let titleTrimmed = Title.trimmingCharacters(
 				in: .whitespacesAndNewlines
 			)
 			let urlParsed = URL(string: url)!
@@ -40,7 +40,7 @@ extension Bookmarks {
 		func validate() throws {
 			// Title has positive length
 			guard
-				title.hasPositiveLength()
+				Title.hasPositiveLength()
 			else {
 				exitWithError("Please specify a title with positive length.")
 			}
@@ -59,7 +59,7 @@ extension Bookmarks {
 				}
 			}
 			// Title is unique
-			guard !ds.contents.map({ $0.title }).contains(title) else {
+			guard !ds.contents.map({ $0.title }).contains(Title) else {
 				exitWithError("A bookmark by that title already exists.")
 			}
 			// URL is unique

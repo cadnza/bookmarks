@@ -15,7 +15,7 @@ extension Bookmarks {
 		var id: Int
 
 		@Option(name: .shortAndLong, help: "The bookmark's new title.")
-		var title: String?
+		var Title: String?
 
 		@Option(name: .shortAndLong, help: "The bookmark's new URL.")
 		var url: String?
@@ -23,13 +23,13 @@ extension Bookmarks {
 		@Option(
 			name: .shortAndLong,
 			help:
-				"The bookmark's new tag, or '\(Bookmarks.Update.tagNullStandin)' to remove the current tag."
+				"The bookmark's new tag, or '\(tagNullStandin)' to remove the current tag."
 		)
 		var tag: String?  // swiftlint:disable:this let_var_whitespace
 
 		func run() {
 			let itemCurrent = ds.contents.first { $0.id == id }
-			if let titleU = title {
+			if let titleU = Title {
 				itemCurrent!.setTitle(titleU)
 			}
 			if let urlU = url {
@@ -50,13 +50,13 @@ extension Bookmarks {
 				exitWithError("Please specify a valid bookmark ID.")
 			}
 			// At least one update parameter is specified
-			guard [title, url, tag].map({ $0 != nil }).contains(true) else {
+			guard [Title, url, tag].map({ $0 != nil }).contains(true) else {
 				exitWithError(
 					"Please specify at least one parameter to update."
 				)
 			}
 			// Title
-			if let titleU = title {
+			if let titleU = Title {
 				// Title has positive length
 				guard titleU.hasPositiveLength() else {
 					exitWithError(
@@ -73,7 +73,7 @@ extension Bookmarks {
 					exitWithError("A bookmark by that title already exists.")
 				}
 				// Title has changed
-				guard ds.contents.first(where: { $0.id == id })!.title != title
+				guard ds.contents.first(where: { $0.id == id })!.title != Title
 				else {
 					exitWithError(
 						"Title has not changed and will not be updated."
