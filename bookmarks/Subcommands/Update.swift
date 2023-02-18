@@ -7,7 +7,7 @@ extension Bookmarks {
 
 		static let configuration = CommandConfiguration(
 			abstract: "Update a bookmark",
-			subcommands: [Tag.self]
+			subcommands: [UpdateTag.self]
 		)
 
 		static let tagNullStandin = "null"

@@ -8,7 +8,7 @@ extension Bookmarks {
 
 		static let configuration = CommandConfiguration(
 			abstract: "List all bookmarks",
-			subcommands: [Tags.self]
+			subcommands: [ListTags.self]
 		)
 
 		@Flag(name: .shortAndLong, help: "Show output as JSON.")

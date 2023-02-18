@@ -1,13 +1,13 @@
-// swiftlint:disable:this file_name
 import ArgumentParser
 import Chalk
 import Foundation
 
-extension Bookmarks.List {
+extension Bookmarks {
 
-	struct Tags: ParsableCommand {
+	struct ListTags: ParsableCommand {
 
 		static let configuration = CommandConfiguration(
+			commandName: "tags",
 			abstract: "List all tags"
 		)
 

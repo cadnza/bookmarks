@@ -1,12 +1,12 @@
-// swiftlint:disable:this file_name
 import ArgumentParser
 import Foundation
 
-extension Bookmarks.Update {
+extension Bookmarks {
 
-	struct Tag: ParsableCommand {
+	struct UpdateTag: ParsableCommand {
 
 		static let configuration = CommandConfiguration(
+			commandName: "tags",
 			abstract: "Rename a tag on all of its bookmarks"
 		)
 

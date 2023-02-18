@@ -1,12 +1,12 @@
-// swiftlint:disable:this file_name
 import ArgumentParser
 import Foundation
 
-extension Bookmarks.Remove {
+extension Bookmarks {
 
-	struct Tag: ParsableCommand {
+	struct RemoveTag: ParsableCommand {
 
 		static let configuration = CommandConfiguration(
+			commandName: "tag",
 			abstract: "Remove a tag from all of its bookmarks"
 		)
 
