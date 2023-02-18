@@ -15,8 +15,11 @@ extension Bookmarks {
 		@Argument(help: "The bookmark's URL")
 		var url: String
 
-		@Option(help: "A tag for the bookmark, if you'd like one")
-		var tag: String?
+		@Option(
+			name: .shortAndLong,
+			help: "A tag for the bookmark, if you'd like one"
+		)
+		var tag: String?  // swiftlint:disable:this let_var_whitespace
 
 		func run() {
 			let titleTrimmed = title.trimmingCharacters(

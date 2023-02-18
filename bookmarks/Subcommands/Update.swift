@@ -15,13 +15,14 @@ extension Bookmarks {
 		@Argument(help: "The ID of the bookmark to update \(idsWarningNote)")
 		var id: Int
 
-		@Option(help: "The bookmark's new title")
+		@Option(name: .shortAndLong, help: "The bookmark's new title")
 		var title: String?
 
-		@Option(help: "The bookmark's new URL")
+		@Option(name: .shortAndLong, help: "The bookmark's new URL")
 		var url: String?
 
 		@Option(
+			name: .shortAndLong,
 			help:
 				"The bookmark's new tag, or '\(Bookmarks.Update.tagNullStandin)' to remove the current tag"
 		)
