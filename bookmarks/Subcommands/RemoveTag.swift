@@ -6,7 +6,6 @@ extension Bookmarks {
 	struct RemoveTag: ParsableCommand {
 
 		static let configuration = CommandConfiguration(
-			commandName: "tag",
 			abstract: "Remove a tag from all of its bookmarks"
 		)
 

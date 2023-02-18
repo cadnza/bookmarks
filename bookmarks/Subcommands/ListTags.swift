@@ -7,7 +7,6 @@ extension Bookmarks {
 	struct ListTags: ParsableCommand {
 
 		static let configuration = CommandConfiguration(
-			commandName: "tags",
 			abstract: "List all tags"
 		)
 

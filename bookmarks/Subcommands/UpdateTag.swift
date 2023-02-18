@@ -6,7 +6,6 @@ extension Bookmarks {
 	struct UpdateTag: ParsableCommand {
 
 		static let configuration = CommandConfiguration(
-			commandName: "tags",
 			abstract: "Rename a tag on all of its bookmarks"
 		)
 
