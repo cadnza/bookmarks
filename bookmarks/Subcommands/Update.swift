@@ -23,7 +23,7 @@ extension Bookmarks {
 		var tag: String?  // swiftlint:disable:this let_var_whitespace
 
 		func run() {
-			var itemCurrent = ds.contents.first { $0.id == id }
+			let itemCurrent = ds.contents.first { $0.id == id }
 			if let titleU = title {
 				itemCurrent!.setTitle(titleU)
 			}
