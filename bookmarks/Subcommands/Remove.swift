@@ -10,7 +10,7 @@ extension Bookmarks {
 			subcommands: [Tag.self]
 		)
 
-		@Argument(help: "The ID of the bookmark to remove \(idsWarningNote)")
+		@Argument(help: "The ID of the bookmark to remove. \(idsWarningNote)")
 		var id: Int
 
 		func run() {

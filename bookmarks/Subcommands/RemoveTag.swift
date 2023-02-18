@@ -10,7 +10,7 @@ extension Bookmarks.Remove {
 			abstract: "Remove a tag from all of its bookmarks"
 		)
 
-		@Argument(help: "The tag to remove")
+		@Argument(help: "The tag to remove.")
 		var tag: String
 
 		func run() {

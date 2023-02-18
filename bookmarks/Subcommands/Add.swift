@@ -9,15 +9,15 @@ extension Bookmarks {
 			abstract: "Add a new bookmark"
 		)
 
-		@Argument(help: "The bookmark's title")
+		@Argument(help: "The bookmark's title.", completion: nil)
 		var title: String
 
-		@Argument(help: "The bookmark's URL")
+		@Argument(help: "The bookmark's URL.", completion: nil)
 		var url: String
 
 		@Option(
 			name: .shortAndLong,
-			help: "A tag for the bookmark, if you'd like one"
+			help: "A tag for the bookmark, if you'd like one."
 		)
 		var tag: String?  // swiftlint:disable:this let_var_whitespace
 

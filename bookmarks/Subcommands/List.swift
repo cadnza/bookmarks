@@ -11,7 +11,7 @@ extension Bookmarks {
 			subcommands: [Tags.self]
 		)
 
-		@Flag(name: .shortAndLong, help: "Show output as JSON")
+		@Flag(name: .shortAndLong, help: "Show output as JSON.")
 		private var json = false
 
 		private var untaggedHeading = "Untagged"

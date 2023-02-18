@@ -11,7 +11,7 @@ extension Bookmarks.List {
 			abstract: "List all tags"
 		)
 
-		@Flag(name: .shortAndLong, help: "Show output as JSON")
+		@Flag(name: .shortAndLong, help: "Show output as JSON.")
 		private var json = false
 
 		func run() {
