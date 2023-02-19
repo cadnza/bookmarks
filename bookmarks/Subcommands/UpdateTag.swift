@@ -19,16 +19,27 @@ extension Bookmarks {
 		var newTag: String  // swiftlint:disable:this let_var_whitespace
 
 		func run() {
+			ds.contents.filter { $0.tag == oldTag }
+				.forEach {
+					$0.setTag(newTag == Bookmarks.tagNullStandin ? nil : newTag)
+				}
 		}
 
 		func validate() throws {
 			// Old tag exists
-			guard ds.uniqueTags.filter({ $0 != nil }).map({ $0! }).contains(oldTag) else {
+			guard
+				ds.uniqueTags
+					.filter({ $0 != nil })
+					.map({ $0! })
+					.contains(oldTag)
+			else {
 				exitWithError("Please specify an existing tag to update.")
 			}
 			// New tag has positive length
 			guard newTag.hasPositiveLength() else {
-				exitWithError("Please specify a new tag name with positive length.")
+				exitWithError(
+					"Please specify a new tag name with positive length."
+				)
 			}
 		}
 	}
