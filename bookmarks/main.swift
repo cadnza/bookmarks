@@ -4,6 +4,8 @@ import Foundation
 
 struct Bookmarks: ParsableCommand {
 
+	// TODO: Add completion types to arguments
+
 	static var ds: DataSource = try! DataSource()
 
 	static let configuration = CommandConfiguration(
@@ -36,4 +38,4 @@ struct Bookmarks: ParsableCommand {
 
 }
 
-Bookmarks.main(["list-tags", "-j"])  // FIXME: Use @main attribute instead of direct call
+Bookmarks.main()  // FIXME: Use @main attribute instead of direct call
