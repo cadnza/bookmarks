@@ -2,6 +2,7 @@ import ArgumentParser
 import Chalk
 import Foundation
 
+@main
 struct Bookmarks: ParsableCommand {
 
 	// TODO: Add completion types to arguments
@@ -37,5 +38,3 @@ struct Bookmarks: ParsableCommand {
 	]
 
 }
-
-Bookmarks.main()  // FIXME: Use @main attribute instead of direct call
