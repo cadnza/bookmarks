@@ -55,7 +55,9 @@ struct Bookmarks: ParsableCommand {
 		"id": .magenta,
 	]
 
-	static let completionIds = ds.contents.map { "\($0.id!):\($0.title)" }
+	static let completionIds = ds.contents.map {
+		"\($0.id!):\($0.tag == nil ? untaggedHeading : $0.tag!)\\: \($0.title)"
+	}
 	static let completionTags = ds.uniqueTags.filter { $0 != nil }.map { $0! }
 	static var completionTagsWithNull: [String] {
 		var original = completionTags
