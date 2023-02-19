@@ -20,14 +20,7 @@ extension Bookmarks {
 			if json {
 				print(ds.jsonWithIDs)
 			} else {
-				(ds.contents.map { $0.tag }
-					.reduce(into: []) { result, x in
-						if !result.contains(where: { e in
-							e as? String == x
-						}) {
-							result.append(x as Any)
-						}
-					} as! [String?])
+				ds.uniqueTags
 					.forEach {
 						var contentsCurrent: [Item]
 						var tagHeading: String

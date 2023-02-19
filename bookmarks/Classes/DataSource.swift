@@ -19,6 +19,17 @@ class DataSource {
 		buildJson(withIDs: true)
 	}
 
+	var uniqueTags: [String?] {
+		contents.map { $0.tag }
+			.reduce(into: []) { result, x in
+				if !result.contains(where: { e in
+					e as? String == x
+				}) {
+					result.append(x as Any)
+				}
+			} as! [String?]
+	}
+
 	init() throws {
 		// Set path to config
 		self.configURL = URL(fileURLWithPath: homeVar)

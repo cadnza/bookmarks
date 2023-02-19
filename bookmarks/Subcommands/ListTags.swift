@@ -17,18 +17,9 @@ extension Bookmarks {
 			guard !ds.contents.isEmpty else {
 				exitWithError("No bookmarks to show.")
 			}
-			let uniqueTags =
-				ds.contents.map { $0.tag }
-				.reduce(into: []) { result, x in
-					if !result.contains(where: { e in
-						e as? String == x
-					}) {
-						result.append(x as Any)
-					}
-				} as! [String?]
 			if json {
 				let toSerialize: [[String: Any?]] =
-					uniqueTags
+					ds.uniqueTags
 					.map { t in
 						[
 							"tag": t,
