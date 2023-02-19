@@ -6,7 +6,7 @@ extension Bookmarks {
 	struct Update: ParsableCommand {
 
 		static let configuration = CommandConfiguration(
-			abstract: "Update a bookmark"
+			abstract: "Updates a bookmark."
 		)
 
 		static let tagNullStandin = "null"
