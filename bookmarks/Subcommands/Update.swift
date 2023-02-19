@@ -11,7 +11,7 @@ extension Bookmarks {
 
 		@Argument(
 			help: "The ID of the bookmark to update. \(idsWarningNote)",
-			completion: .list(ds.contents.map { $0.id } as! [String])
+			completion: .list(ds.contents.map { $0.id }.map { String($0) })
 		)
 		var id: Int  // swiftlint:disable:this let_var_whitespace
 
