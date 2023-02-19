@@ -23,6 +23,7 @@ extension Bookmarks {
 				.forEach {
 					$0.setTag(newTag == Bookmarks.tagNullStandin ? nil : newTag)
 				}
+			ds.write()
 		}
 
 		func validate() throws {
