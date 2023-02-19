@@ -5,20 +5,36 @@ import Foundation
 @main
 struct Bookmarks: ParsableCommand {
 
-	// TODO: Document `bookmarks --generate-completion-script zsh` (including bash, zsh, fish)
-
 	static var ds: DataSource = try! DataSource()
 
 	static let configuration = CommandConfiguration(
 		abstract: "Sweet and simple web bookmarks manager.",
-		discussion: "",  // TODO: Write this
+		// swiftlint:disable line_length
+		discussion: [
+			"Keeps all your web bookmarks in \(ds.configURL.path), which you can symlink from Dropbox, a Git repo, or really anywhere else.",
+			"This tool is primarily meant as a backend script for more accessible UI applications, but it works just fine in the command line as well.",
+			"Provided are four base commands for manipulating bookmarks (\(Add._commandName), \(Remove._commandName), \(Update._commandName), \(List._commandName))"
+				+ " as well as two convenience commands (\(UpdateTag._commandName) and \(ListTags._commandName)).",
+			"Run the appropriate command to generate completions for your shell:",
+			["bash", "zsh", "fish"]
+				.map { "\(indentSpacer)bookmarks --generate-completion-script \($0)" }
+				.reduce(into: "") { partialResult, x in
+					partialResult += "\n\(x)"
+				}
+				.trimmingCharacters(in: .newlines),
+		]
+		// swiftlint:enable line_length
+		.reduce(into: "") { partialResult, x in
+			partialResult += "\n\n\(x)"
+		}
+		.trimmingCharacters(in: .whitespacesAndNewlines),
 		subcommands: [
 			Add.self,
-			List.self,
 			Remove.self,
 			Update.self,
-			ListTags.self,
+			List.self,
 			UpdateTag.self,
+			ListTags.self,
 		]
 	)
 
