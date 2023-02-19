@@ -17,7 +17,7 @@ struct Bookmarks: ParsableCommand {
 			"This tool is primarily meant as a backend script for more accessible UI applications, but it works just fine in the command line as well.",
 			"Provided are four base commands for manipulating bookmarks (\(Add._commandName), \(Remove._commandName), \(Update._commandName), \(List._commandName))"
 				+ " as well as two convenience commands (\(UpdateTag._commandName) and \(ListTags._commandName)).",
-			"Run the appropriate command to generate completions for your shell:",
+			"Run the appropriate command to generate completions for your shell (recommended):",
 			["bash", "zsh", "fish"]
 				.map { "\(indentSpacer)bookmarks --generate-completion-script \($0)" }
 				.reduce(into: "") { partialResult, x in
