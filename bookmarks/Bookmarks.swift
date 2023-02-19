@@ -5,6 +5,8 @@ import Foundation
 @main
 struct Bookmarks: ParsableCommand {
 
+	// TODO: Turn static completion strings into functions
+
 	static var ds: DataSource = try! DataSource()
 
 	static let configuration = CommandConfiguration(
