@@ -9,8 +9,11 @@ extension Bookmarks {
 			abstract: "Updates a bookmark."
 		)
 
-		@Argument(help: "The ID of the bookmark to update. \(idsWarningNote)")
-		var id: Int
+		@Argument(
+			help: "The ID of the bookmark to update. \(idsWarningNote)",
+			completion: .list(ds.contents.map { $0.id } as! [String])
+		)
+		var id: Int  // swiftlint:disable:this let_var_whitespace
 
 		@Option(name: .shortAndLong, help: "The bookmark's new title.")
 		var Title: String?

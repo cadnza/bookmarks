@@ -9,12 +9,16 @@ extension Bookmarks {
 			abstract: "Renames a tag on all of its bookmarks."
 		)
 
-		@Argument(help: "The tag to rename.")
-		var oldTag: String
+		@Argument(
+			help: "The tag to rename.",
+			completion: .list(ds.uniqueTags.filter { $0 != nil }.map { $0! })
+		)
+		var oldTag: String  // swiftlint:disable:this let_var_whitespace
 
 		@Argument(
 			help:
-				"A new name for the tag, or '\(tagNullStandin)' to remove the tag from all of its bookmarks."
+				"A new name for the tag, or '\(tagNullStandin)' to remove the tag from all of its bookmarks.",
+			completion: nil
 		)
 		var newTag: String  // swiftlint:disable:this let_var_whitespace
 

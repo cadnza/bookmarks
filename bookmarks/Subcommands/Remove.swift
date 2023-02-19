@@ -9,8 +9,11 @@ extension Bookmarks {
 			abstract: "Removes a bookmark."
 		)
 
-		@Argument(help: "The ID of the bookmark to remove. \(idsWarningNote)")
-		var id: Int
+		@Argument(
+			help: "The ID of the bookmark to remove. \(idsWarningNote)",
+			completion: .list(ds.contents.map { $0.id } as! [String])
+		)
+		var id: Int  // swiftlint:disable:this let_var_whitespace
 
 		func run() {
 			ds.contents = ds.contents.filter {
