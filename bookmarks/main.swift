@@ -10,8 +10,12 @@ struct Bookmarks: ParsableCommand {
 		abstract: "Sweet and simple web bookmarks manager.",
 		discussion: "",  // TODO: Write this
 		subcommands: [
-			Add.self, List.self, Remove.self, Update.self, ListTags.self,
-			RemoveTag.self, UpdateTag.self,
+			Add.self,
+			List.self,
+			Remove.self,
+			Update.self,
+			ListTags.self,
+			UpdateTag.self,
 		]
 	)
 
