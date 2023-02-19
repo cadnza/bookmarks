@@ -9,8 +9,6 @@ extension Bookmarks {
 			abstract: "Updates a bookmark."
 		)
 
-		static let tagNullStandin = "null"
-
 		@Argument(help: "The ID of the bookmark to update. \(idsWarningNote)")
 		var id: Int
 
@@ -38,7 +36,7 @@ extension Bookmarks {
 			if let tagU = tag {
 				itemCurrent!
 					.setTag(
-						tagU == Bookmarks.Update.tagNullStandin ? nil : tagU
+						tagU == tagNullStandin ? nil : tagU
 					)
 			}
 			ds.write()
