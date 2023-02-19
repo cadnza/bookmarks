@@ -39,7 +39,13 @@ extension Bookmarks {
 				let jsonString = String(data: serialized, encoding: .utf8)!
 				print(jsonString)
 			} else {
-				// TODO
+				ds.uniqueTags.forEach { t in
+					let tagTitle = (t == nil ? Bookmarks.untaggedHeading : t)!
+					let ct = ds.contents.filter { $0.tag == t }.count
+					let printColor = t == nil ? colors["noTag"]! : colors["tag"]!
+					print("\(tagTitle, color: printColor, style: [.bold])")
+					print("\(indentSpacer)\(ct, style: .bold) bookmarks")
+				}
 			}
 		}
 	}
