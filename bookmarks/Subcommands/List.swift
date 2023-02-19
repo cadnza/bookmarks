@@ -47,7 +47,7 @@ extension Bookmarks {
 									"\(indentSpacer)\("\($0.id!).", color: colors["id"]!, style: .bold) \($0.title)"
 								)
 								print(
-									"\(indentSpacer)\(indentSpacer)\($0.url, color: colors["url"]!, style: [.bold, .underlined])"
+									"\(indentSpacer)\(indentSpacer)\($0.url, color: colors["url"]!, style: [.underlined])"
 								)
 							}
 					}
