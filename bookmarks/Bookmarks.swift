@@ -17,7 +17,9 @@ struct Bookmarks: ParsableCommand {
 				+ " as well as two convenience commands (\(UpdateTag._commandName) and \(ListTags._commandName)).",
 			"Run the appropriate command to generate completions for your shell (recommended):",
 			["bash", "zsh", "fish"]
-				.map { "\(indentSpacer)bookmarks --generate-completion-script \($0)" }
+				.map {
+					"\(indentSpacer)bookmarks --generate-completion-script \($0)"
+				}
 				.reduce(into: "") { partialResult, x in
 					partialResult += "\n\(x)"
 				}
