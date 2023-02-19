@@ -5,6 +5,8 @@ import Foundation
 @main
 struct Bookmarks: ParsableCommand {
 
+	// TODO: Document `bookmarks --generate-completion-script zsh` (including bash, zsh, fish)
+
 	static var ds: DataSource = try! DataSource()
 
 	static let configuration = CommandConfiguration(
