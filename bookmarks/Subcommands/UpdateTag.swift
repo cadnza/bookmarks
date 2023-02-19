@@ -10,13 +10,13 @@ extension Bookmarks {
 		)
 
 		@Argument(help: "The tag to rename.")
-		var tag: String
+		var oldTag: String
 
 		@Argument(
 			help:
 				"A new name for the tag, or '\(tagNullStandin)' to remove the tag from all of its bookmarks."
 		)
-		var new: String  // swiftlint:disable:this let_var_whitespace
+		var newTag: String  // swiftlint:disable:this let_var_whitespace
 
 		func run() {
 		}
