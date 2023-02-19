@@ -5,8 +5,6 @@ import Foundation
 @main
 struct Bookmarks: ParsableCommand {
 
-	// TODO: Turn static completion strings into functions
-
 	static var ds: DataSource = try! DataSource()
 
 	static let configuration = CommandConfiguration(
@@ -54,5 +52,13 @@ struct Bookmarks: ParsableCommand {
 		"url": .blue,
 		"id": .magenta,
 	]
+
+	static let completionIds = ds.contents.map { "\($0.id!):\($0.title)" }
+	static let completionTags = ds.uniqueTags.filter { $0 != nil }.map { $0! }
+	static var completionTagsWithNull: [String] {
+		var original = completionTags
+		original.append("\(tagNullStandin):Remove tag")
+		return original
+	}
 
 }

@@ -11,7 +11,9 @@ extension Bookmarks {
 
 		@Argument(
 			help: "The tag to rename.",
-			completion: .list(ds.uniqueTags.filter { $0 != nil }.map { $0! })
+			completion: .custom { _ in
+				completionTags
+			}
 		)
 		var oldTag: String  // swiftlint:disable:this let_var_whitespace
 

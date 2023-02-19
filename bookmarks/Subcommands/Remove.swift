@@ -11,7 +11,9 @@ extension Bookmarks {
 
 		@Argument(
 			help: "The ID of the bookmark to remove. \(idsWarningNote)",
-			completion: .list(ds.contents.map { $0.id }.map { String($0) })
+			completion: .custom { _ in
+				completionIds
+			}
 		)
 		var id: Int  // swiftlint:disable:this let_var_whitespace
 

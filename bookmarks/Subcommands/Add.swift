@@ -18,7 +18,9 @@ extension Bookmarks {
 		@Option(
 			name: .shortAndLong,
 			help: "A tag for the bookmark, if you'd like one.",
-			completion: .list(ds.uniqueTags.filter { $0 != nil }.map { $0! })
+			completion: .custom { _ in
+				completionTags
+			}
 		)
 		var tag: String?  // swiftlint:disable:this let_var_whitespace
 

@@ -11,7 +11,9 @@ extension Bookmarks {
 
 		@Argument(
 			help: "The ID of the bookmark to update. \(idsWarningNote)",
-			completion: .list(ds.contents.map { $0.id }.map { String($0) })
+			completion: .custom { _ in
+				completionIds
+			}
 		)
 		var id: Int  // swiftlint:disable:this let_var_whitespace
 
@@ -33,7 +35,9 @@ extension Bookmarks {
 			name: .shortAndLong,
 			help:
 				"The bookmark's new tag, or '\(tagNullStandin)' to remove the current tag.",
-			completion: .list(ds.uniqueTags.filter { $0 != nil }.map { $0! })
+			completion: .custom { _ in
+				completionTagsWithNull
+			}
 		)
 		var tag: String?  // swiftlint:disable:this let_var_whitespace
 
