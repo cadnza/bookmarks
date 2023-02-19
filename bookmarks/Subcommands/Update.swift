@@ -15,16 +15,25 @@ extension Bookmarks {
 		)
 		var id: Int  // swiftlint:disable:this let_var_whitespace
 
-		@Option(name: .shortAndLong, help: "The bookmark's new title.")
-		var Title: String?
+		@Option(
+			name: .shortAndLong,
+			help: "The bookmark's new title.",
+			completion: nil
+		)
+		var Title: String?  // swiftlint:disable:this let_var_whitespace
 
-		@Option(name: .shortAndLong, help: "The bookmark's new URL.")
-		var url: String?
+		@Option(
+			name: .shortAndLong,
+			help: "The bookmark's new URL.",
+			completion: nil
+		)
+		var url: String?  // swiftlint:disable:this let_var_whitespace
 
 		@Option(
 			name: .shortAndLong,
 			help:
-				"The bookmark's new tag, or '\(tagNullStandin)' to remove the current tag."
+				"The bookmark's new tag, or '\(tagNullStandin)' to remove the current tag.",
+			completion: .list(ds.uniqueTags.filter { $0 != nil }.map { $0! })
 		)
 		var tag: String?  // swiftlint:disable:this let_var_whitespace
 
