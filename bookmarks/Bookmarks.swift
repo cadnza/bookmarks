@@ -5,7 +5,7 @@ import Foundation
 @main
 struct Bookmarks: ParsableCommand {
 
-	// TODO: Add completion types to arguments
+	// TODO: Add completion types to arguments and options
 
 	static var ds: DataSource = try! DataSource()
 
