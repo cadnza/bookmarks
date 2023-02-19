@@ -30,4 +30,4 @@ struct Bookmarks: ParsableCommand {
 
 }
 
-Bookmarks.main()  // FIXME: Remove args
+Bookmarks.main(["list-tags", "-j"])  // FIXME: Use @main attribute instead of direct call
