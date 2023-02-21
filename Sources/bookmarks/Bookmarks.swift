@@ -6,7 +6,6 @@ import Foundation
 struct Bookmarks: ParsableCommand {
 
 	// TODO: Write logic for dynamically refreshing completion functions in dotfiles
-	// TODO: Add ability for list subcommand to filter by tag (Multiple? Or just one?)
 
 	static var ds: DataSource = try! DataSource()
 
