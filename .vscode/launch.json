@@ -1,0 +1,22 @@
+{
+	"configurations": [
+		{
+			"type": "lldb",
+			"request": "launch",
+			"name": "Debug bookmarks",
+			"program": "${workspaceFolder:bookmarks}/.build/debug/bookmarks",
+			"args": [],
+			"cwd": "${workspaceFolder:bookmarks}",
+			"preLaunchTask": "swift: Build Debug bookmarks"
+		},
+		{
+			"type": "lldb",
+			"request": "launch",
+			"name": "Release bookmarks",
+			"program": "${workspaceFolder:bookmarks}/.build/release/bookmarks",
+			"args": [],
+			"cwd": "${workspaceFolder:bookmarks}",
+			"preLaunchTask": "swift: Build Release bookmarks"
+		}
+	]
+}
