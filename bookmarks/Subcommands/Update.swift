@@ -61,11 +61,11 @@ extension Bookmarks {
 		func validate() throws {
 			// ID is valid
 			guard ds.contents.map({ $0.id }).contains(id) else {
-				exitWithError("Please specify a valid bookmark ID.")
+				throw ValidationError("Please specify a valid bookmark ID.")
 			}
 			// At least one update parameter is specified
 			guard [Title, url, tag].map({ $0 != nil }).contains(true) else {
-				exitWithError(
+				throw ValidationError(
 					"Please specify at least one parameter to update."
 				)
 			}
@@ -73,7 +73,7 @@ extension Bookmarks {
 			if let titleU = Title {
 				// Title has positive length
 				guard titleU.hasPositiveLength() else {
-					exitWithError(
+					throw ValidationError(
 						"Please specify a title with positive length."
 					)
 				}
@@ -84,12 +84,12 @@ extension Bookmarks {
 						.map({ $0.title })
 						.contains(titleU)
 				else {
-					exitWithError("A bookmark by that title already exists.")
+					throw ValidationError("A bookmark by that title already exists.")
 				}
 				// Title has changed
 				guard ds.contents.first(where: { $0.id == id })!.title != Title
 				else {
-					exitWithError(
+					throw ValidationError(
 						"Title has not changed and will not be updated."
 					)
 				}
@@ -100,7 +100,7 @@ extension Bookmarks {
 				let urlErrorMessage = "Please specify a valid URL."
 				let urlParsed = URL(string: urlU)
 				guard urlParsed != nil else {
-					exitWithError(urlErrorMessage)
+					throw ValidationError(urlErrorMessage)
 				}
 				// URL is unique
 				guard
@@ -109,14 +109,14 @@ extension Bookmarks {
 						.map({ $0.url.absoluteString })
 						.contains(urlU)
 				else {
-					exitWithError("A bookmark to that URL already exists.")
+					throw ValidationError("A bookmark to that URL already exists.")
 				}
 				// URL has changed
 				guard
 					ds.contents.first(where: { $0.id == id })!.url
 						.absoluteString != url
 				else {
-					exitWithError(
+					throw ValidationError(
 						"URL has not changed and will not be updated."
 					)
 				}
@@ -127,12 +127,12 @@ extension Bookmarks {
 				guard
 					tagU.hasPositiveLength()
 				else {
-					exitWithError("Please specify a tag with positive length.")
+					throw ValidationError("Please specify a tag with positive length.")
 				}
 				// Tag has changed
 				guard ds.contents.first(where: { $0.id == id })!.tag != tag
 				else {
-					exitWithError(
+					throw ValidationError(
 						"Tag has not changed and will not be updated."
 					)
 				}

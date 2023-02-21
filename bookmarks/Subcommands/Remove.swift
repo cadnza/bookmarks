@@ -26,7 +26,7 @@ extension Bookmarks {
 		func validate() throws {
 			// ID is valid
 			guard ds.contents.map({ $0.id }).contains(id) else {
-				exitWithError("Please specify a valid bookmark ID.")
+				throw ValidationError("Please specify a valid bookmark ID.")
 			}
 		}
 	}

@@ -45,30 +45,30 @@ extension Bookmarks {
 			guard
 				Title.hasPositiveLength()
 			else {
-				exitWithError("Please specify a title with positive length.")
+				throw ValidationError("Please specify a title with positive length.")
 			}
 			// URL is valid
 			let urlErrorMessage = "Please specify a valid URL."
 			let urlParsed = URL(string: url)
 			guard urlParsed != nil else {
-				exitWithError(urlErrorMessage)
+				throw ValidationError(urlErrorMessage)
 			}
 			// Tag has positive length
 			if let tagU = tag {
 				guard
 					tagU.hasPositiveLength()
 				else {
-					exitWithError("Please specify a tag with positive length.")
+					throw ValidationError("Please specify a tag with positive length.")
 				}
 			}
 			// Title is unique
 			guard !ds.contents.map({ $0.title }).contains(Title) else {
-				exitWithError("A bookmark by that title already exists.")
+				throw ValidationError("A bookmark by that title already exists.")
 			}
 			// URL is unique
 			guard !ds.contents.map({ $0.url.absoluteString }).contains(url)
 			else {
-				exitWithError("A bookmark to that URL already exists.")
+				throw ValidationError("A bookmark to that URL already exists.")
 			}
 		}
 	}

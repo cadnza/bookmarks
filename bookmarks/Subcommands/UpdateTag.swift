@@ -40,11 +40,11 @@ extension Bookmarks {
 					.map({ $0! })
 					.contains(oldTag)
 			else {
-				exitWithError("Please specify an existing tag to update.")
+				throw ValidationError("Please specify an existing tag to update.")
 			}
 			// New tag has positive length
 			guard newTag.hasPositiveLength() else {
-				exitWithError(
+				throw ValidationError(
 					"Please specify a new tag name with positive length."
 				)
 			}
