@@ -35,6 +35,7 @@ struct Bookmarks: ParsableCommand {
 			partialResult += "\n\n\(x)"
 		}
 		.trimmingCharacters(in: .whitespacesAndNewlines),
+		version: "1.0.0",
 		subcommands: [
 			Add.self,
 			Remove.self,
