@@ -16,7 +16,7 @@ Syncing your bookmarks into a text file is simpler and more straight-forward tha
 
 ## Installation
 
-Download the [latest release](https://github.com/cadnza/bookmarks/releases) or clone the project and build in Xcode.
+Build with `swift build`.
 
 ## Use
 
