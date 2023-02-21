@@ -5,8 +5,6 @@ import Foundation
 @main
 struct Bookmarks: ParsableCommand {
 
-	// Add link to Alfred extension // TODO
-
 	static var ds: DataSource = try! DataSource()
 
 	static let configuration = CommandConfiguration(

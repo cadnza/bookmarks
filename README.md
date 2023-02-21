@@ -12,7 +12,7 @@ It's a simple command line utility that organizes your web bookmarks into `$HOME
 
 Syncing your bookmarks into a text file is simpler and more straight-forward that going through any of the major browsers. And if you're like me, you're only ever opening your bookmarks through [Alfred](https://www.alfredapp.com/) anyway, so you hardly need them attached to your browser.
 
-`bookmarks` is fully featured with intuitive shell completions for bash, zsh, and fish, so it works great in the command line, but it's primarily intended as a backend utility for UI applications like [my Alfred extension]().
+`bookmarks` is fully featured with intuitive shell completions for bash, zsh, and fish, so it works great in the command line, but it's primarily intended as a backend utility for UI applications like [my Alfred extension](https://github.com/cadnza/Alfred.alfredpreferences/blob/master/exports/com.cadnza.alfredBookmarks.alfredworkflow).
 
 ## Installation
 
