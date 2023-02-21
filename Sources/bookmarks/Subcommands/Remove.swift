@@ -27,9 +27,9 @@ extension Bookmarks {
 		func validate() throws {
 			// IDs are valid
 			let idErrorMessage =
-			ids.count == 1
-			? "Please specify a valid bookmark ID."
-			: "One or more specified ID is invalid."
+				ids.count == 1
+				? "Please specify a valid bookmark ID."
+				: "One or more specified ID is invalid."
 			guard
 				!(ids.map { ds.contents.map { $0.id }.contains($0) }
 					.contains(false))
