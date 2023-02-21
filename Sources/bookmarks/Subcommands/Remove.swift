@@ -15,18 +15,26 @@ extension Bookmarks {
 				completionIds
 			}
 		)
-		var id: Int  // swiftlint:disable:this let_var_whitespace
+		var ids: [Int]  // swiftlint:disable:this let_var_whitespace
 
 		func run() {
 			ds.contents = ds.contents.filter {
-				$0.id != id
+				!ids.contains($0.id)
 			}
+			ds.write()
 		}
 
 		func validate() throws {
-			// ID is valid
-			guard ds.contents.map({ $0.id }).contains(id) else {
-				throw ValidationError("Please specify a valid bookmark ID.")
+			// IDs are valid
+			let idErrorMessage =
+			ids.count == 1
+			? "Please specify a valid bookmark ID."
+			: "One or more specified ID is invalid."
+			guard
+				!(ids.map { ds.contents.map { $0.id }.contains($0) }
+					.contains(false))
+			else {
+				throw ValidationError(idErrorMessage)
 			}
 		}
 	}

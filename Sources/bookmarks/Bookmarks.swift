@@ -5,7 +5,6 @@ import Foundation
 @main
 struct Bookmarks: ParsableCommand {
 
-	// TODO: Turn ID fields into array arguments and make sure they don't accept zero-length arrays
 	// TODO: Write logic for dynamically refreshing completion functions in dotfiles
 	// TODO: Add ability for list subcommand to filter by tag (Multiple? Or just one?)
 
