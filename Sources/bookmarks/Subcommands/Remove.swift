@@ -10,7 +10,7 @@ extension Bookmarks {
 		)
 
 		@Argument(
-			help: "The ID of the bookmark to remove. \(idsWarningNote)",
+			help: "One or more IDs of bookmarks to remove. \(idsWarningNote)",
 			completion: .custom { _ in
 				completionIds
 			}
