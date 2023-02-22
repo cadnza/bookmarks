@@ -13,13 +13,22 @@ extension Bookmarks {
 		@Flag(name: .shortAndLong, help: "Show output as JSON.")
 		private var json = false
 
-		@Option(name: .shortAndLong, help: "One or more tags to filter by, including '\(tagNullStandin)' for untagged bookmarks.")
-		private var tags: [String] = []
+		@Option(
+			name: .shortAndLong,
+			help:
+				"One or more tags to filter by, including '\(tagNullStandin)' for untagged bookmarks.",
+			completion: .custom { _ in
+				Bookmarks.completionTagsWithNull
+			}
+		)
+		private var tags: [String] = []  // swiftlint:disable:this let_var_whitespace
 
 		func run() {
 			if !tags.isEmpty {
 				ds.contents = ds.contents.filter {
-					tags.contains($0.tag == nil ? Bookmarks.tagNullStandin : $0.tag!)
+					tags.contains(
+						$0.tag == nil ? Bookmarks.tagNullStandin : $0.tag!
+					)
 				}
 			}
 			guard !ds.contents.isEmpty else {
@@ -65,10 +74,17 @@ extension Bookmarks {
 		func validate() throws {
 			// All tags valid
 			let idErrorMessage =
-			tags.count == 1
-			? "Please specify a valid tag."
-			: "One or more tag is invalid."
-			guard !tags.map({ ds.uniqueTags.map { $0 == nil ? Bookmarks.tagNullStandin : $0! }.contains($0) }).contains(false) else {
+				tags.count == 1
+				? "Please specify a valid tag."
+				: "One or more tag is invalid."
+			guard
+				!tags.map({
+					ds.uniqueTags
+						.map { $0 == nil ? Bookmarks.tagNullStandin : $0! }
+						.contains($0)
+				})
+				.contains(false)
+			else {
 				throw ValidationError(idErrorMessage)
 			}
 		}
