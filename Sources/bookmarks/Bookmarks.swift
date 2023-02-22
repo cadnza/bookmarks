@@ -24,7 +24,8 @@ struct Bookmarks: ParsableCommand {
 					partialResult += "\n\(x)"
 				}
 				.trimmingCharacters(in: .newlines),
-			idsWarningNote
+			idsWarningNote,
+			attribution
 		]
 		// swiftlint:enable line_length
 		.reduce(into: "") { partialResult, x in
@@ -41,6 +42,8 @@ struct Bookmarks: ParsableCommand {
 			ListTags.self,
 		]
 	)
+
+	static let attribution = "-- Built by [cadnza](https://github.com/cadnza) --"
 
 	static let untaggedHeading = "Untagged"
 	static let indentSpacer = "  "
