@@ -5,8 +5,6 @@ import Foundation
 @main
 struct Bookmarks: ParsableCommand {
 
-	// TODO: Write logic for dynamically refreshing completion functions in dotfiles
-
 	static var ds: DataSource = try! DataSource()
 
 	static let configuration = CommandConfiguration(
@@ -26,6 +24,7 @@ struct Bookmarks: ParsableCommand {
 					partialResult += "\n\(x)"
 				}
 				.trimmingCharacters(in: .newlines),
+			idsWarningNote
 		]
 		// swiftlint:enable line_length
 		.reduce(into: "") { partialResult, x in
@@ -49,7 +48,7 @@ struct Bookmarks: ParsableCommand {
 	static let tagNullStandin = "null"
 
 	static let idsWarningNote =
-		"NOTE: Bookmark IDs are NOT STATIC and WILL CHANGE as you add and remove bookmarks."
+		"NOTE: Bookmark IDs are *not static* and *will change* as you add and remove bookmarks."
 
 	static let colors: [String: Color] = [
 		"noTag": .red,
